@@ -1,0 +1,48 @@
+{
+  "name": "@chr33s/react-socket",
+  "version": "1.0.0",
+  "description": "React Universal EventEmitter WebSocket Component",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "mkdir -p dist",
+    "build": "browserify ./index.js > ./dist/socket.js",
+    "postbuild": "npm run build:min && npm run build:gz",
+    "build:min": "uglifyjs ./dist/socket.js -o ./dist/socket.min.js -cm",
+    "build:gz": "gzip -c --best ./dist/socket.min.js > ./dist/socket.min.js.gz"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babelify": "^7.3.0",
+    "browserify": "^14.3.0",
+    "react": "^15.5.4",
+    "uglify-js": "^2.8.22"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015",
+            "stage-0"
+          ]
+        }
+      ]
+    ]
+  },
+  "author": "chris",
+  "homepage": "https://github.com/chr33s/react-socket",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chr33s/react-socket.git"
+  },
+  "keywords": [
+    "React",
+    "WebSocket",
+    "EventEmitter"
+  ],
+  "license": "MIT"
+}
